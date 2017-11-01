@@ -1,0 +1,47 @@
+function [code,dict,outNum] = LZWencode(s, initDict,dictLen )
+
+outNum = 0;
+phrase = s(1); %步骤1)
+nLen = length(s);
+code = zeros(1,nLen);%为编码数据分配存储空间
+
+i=2;
+while(i<=nLen)
+    si = s(i);
+    stp = [phrase si];
+    isExist = codeIsExistDict(stp, initDict, dictLen);
+    if isExist==1
+        phrase = stp;
+    else
+        [exist,pos]= codeIsExistDict(phrase, initDict, dictLen);
+        fprintf('%s %d\n',phrase,pos) %输出短语及编码     
+        outNum = outNum+1; 
+        code(outNum)=pos; %存储输出短语的编码
+        dictLen=dictLen+1; %更新词典长度
+        initDict{dictLen}=stp; %词典添加短语
+        phrase = si;
+    end
+    i=i+1;
+end
+[exist,pos]= codeIsExistDict(phrase, initDict, dictLen);
+fprintf('%s %d\r\n',phrase,pos) %输出短语及编码
+outNum = outNum+1; 
+code(outNum)=pos; 
+ 
+dict = initDict;
+end
+
+
+%判断短语是否在词典中
+function [isExist,pos] = codeIsExistDict(phrase, dict, dictLen)
+isExist = 0;
+i=1;
+while(i<=dictLen)
+    if strcmp(dict{i},phrase)==1
+        isExist = 1;
+        pos = i;
+        return;
+    end
+    i=i+1;
+end
+end
