@@ -3,9 +3,8 @@
 %初始化
 clear;clc;close all;
 %输入信号
-%s = 'ABABBABCABABBA';
+s = 'ABABBABCABABBA';
 % s = 'AB';
-s ='ababcbababaaaaaaa';
 %创建初始词典
 su =unique(s);%去重
 dictLen = length(su);
@@ -16,7 +15,7 @@ end
 
 %编码
 [code,initDict,outNum] = LZWencode(s,initDict,dictLen);
-%code = code(1:outNum);
+code = code(1:outNum);
 code
 initDict
 outNum

@@ -12,20 +12,12 @@ while(i<=nLen)
     isExist = codeIsExistDict(stp, initDict, dictLen);
     if isExist==1
         phrase = stp;
-        if i==nLen
-            outNum = outNum+1;
-            code{outNum} = phrase;
-        end
     else     
         outNum = outNum+1;
         code{outNum}=phrase; %´æ´¢Êä³ö¶ÌÓïµÄ±àÂë
         dictLen=dictLen+1; %¸üÐÂ´Êµä³¤¶È
         initDict{dictLen}=stp; %´ÊµäÌí¼Ó¶ÌÓï
         phrase = si;
-        if i==nLen
-            outNum = outNum+1;
-            code{outNum} = phrase;
-        end
     end
     i=i+1;
 end
