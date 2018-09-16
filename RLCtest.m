@@ -1,15 +1,14 @@
 % 测试行程编码算法
-clear all;
-clc;
-s = [1 2 2 2 2  3 3 3 3 4 4 4 5 5 5 5 5 5 5 6 6 6 7];
-s
+clear;clc;close all;
+s = [1 2 2 2 2 3 3 3 3 4 4 4 5 5 5 5 5 5 5 6 6 6 7];
+
 rle = data2rle(s); %行程编码
-rle
+disp(rle)
 save('RLCtest.mat','rle');
 clear; %清空内存
 load RLCtest.mat
 sr = rle2data(rle); %行程解码
-sr
+disp(sr)
 
 % I=imread('LENA.bmp');
 % figure;

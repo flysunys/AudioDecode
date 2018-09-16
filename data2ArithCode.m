@@ -10,8 +10,8 @@ end
 
 low = 0.0; up=1.0; %步骤3）
 N = length(s); 
-Range = zeros(N,2);
-Range(1,:) = [low up];
+Range = zeros(N,2);%将其作为间隔变化的记录器
+Range(1,:) = [low up];%初始化间隔
 i =1;
 while(i<=N)
      range = up-low; %步骤4) 
