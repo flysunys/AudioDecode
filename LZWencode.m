@@ -9,7 +9,7 @@ i=2;
 while(i<=nLen)
     si = s(i);
     stp = [phrase si];
-    isExist = codeIsExistDict(stp, initDict, dictLen);
+    isExist = CodeIsExistDict(stp, initDict, dictLen);
     if isExist==1
         phrase = stp;
         if i==nLen
@@ -34,16 +34,3 @@ dict = initDict;
 end
 
 
-%ÅÐ¶Ï¶ÌÓïÊÇ·ñÔÚ´ÊµäÖÐ
-function [isExist,pos] = codeIsExistDict(phrase, dict, dictLen)
-isExist = 0;
-i=1;
-while(i<=dictLen)
-    if strcmp(dict{i},phrase)==1
-        isExist = 1;
-        pos = i;
-        return;
-    end
-    i=i+1;
-end
-end

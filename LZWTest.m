@@ -6,6 +6,7 @@ clear;clc;close all;
 %s = 'ABABBABCABABBA';
 % s = 'AB';
 s ='ababcbababaaaaaaa';
+%s = 'ababcababac';
 %创建初始词典
 su =unique(s);%去重
 dictLen = length(su);
@@ -15,11 +16,11 @@ for i =1:dictLen
 end
 
 %编码
-[code,initDict,outNum] = LZWencode(s,initDict,dictLen);
+[code,Dict,outNum] = LZWencode(s,initDict,dictLen);
 %code = code(1:outNum);
-code
-initDict
-outNum
+display(code);%编码码段
+display(Dict);%编码字典
+display(outNum);%编码个数
 
 % save('LZWtest.mat','s','code','initDict','dictLen');
 
@@ -27,8 +28,8 @@ outNum
 % clear; %清除内存
 % load LZWtest.mat;
 [s2,dict2] = LZWdecode(code,initDict,dictLen);
-s2
-dict2
+display(s2)%解码之后的结果
+display(dict2)%解码之后的字典
 if strcmp(s,s2)==1
     disp('解码数据与原数据一致');
 else
